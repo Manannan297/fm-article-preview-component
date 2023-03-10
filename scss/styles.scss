@@ -60,7 +60,6 @@ body {
   max-width: 327px;
   background-color: white;
   border-radius: 12px;
-  overflow: hidden;
   line-height: 1.5;
 
   @media (min-width: $width-tablet) {
@@ -73,11 +72,13 @@ body {
 
     @media (max-width: ($width-tablet - 1)) {
       height: 200px;
+      border-radius: 12px 12px 0 0;
     }
 
     @media (min-width: $width-tablet) {
       flex: 0 0 auto;
       width: 39%;
+      border-radius: 12px 0 0 12px;
     }
 
     .img-fluid {
@@ -112,6 +113,8 @@ body {
   }
 
   &__text {
+    color: $color-desaturated-dark-blue;
+
     p {
       margin-top: 0;
 
@@ -138,35 +141,38 @@ body {
     margin-right: 16px;
   }
 
-  &__author-info {
-    strong {
-      display: block;
-    }
-  }
-
-  .share__btn {
-    margin-left: auto;
+  &__date {
+    color: $color-grayish-blue;
   }
 }
 
 .share {
+  margin-left: auto;
+
+  @media (min-width: $width-tablet) {
+    position: relative;
+  }
+
   &__btn {
     width: 32px;
     height: 32px;
     padding: 0;
     border: none;
-    background: url("../images/icon-share.svg") center center no-repeat
-      $color-light-grayish-blue;
+    background: $color-light-grayish-blue;
     border-radius: 50%;
     position: relative;
     z-index: 1;
     transition: all 0.3s;
+    cursor: pointer;
 
     path {
       transition: all 0.3s;
     }
 
+    &:hover,
+    &:focus,
     &.active {
+      outline: none;
       background-color: $color-desaturated-dark-blue;
 
       path {
@@ -177,14 +183,11 @@ body {
 
   &__panel {
     position: absolute;
-    bottom: 0;
-    left: 0;
+
     display: flex;
     align-items: center;
     background-color: $color-very-dark-grayish-blue;
-    width: 100%;
-    padding: 24px;
-    line-height: 32px;
+
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -192,6 +195,36 @@ body {
     &.active {
       opacity: 1;
       pointer-events: initial;
+    }
+
+    @media (max-width: ($width-tablet - 1)) {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 24px;
+      line-height: 32px;
+    }
+
+    @media (min-width: $width-tablet) {
+      padding: 18px 32px;
+      border-radius: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -85px;
+      filter: drop-shadow(-0 2px 4px $color-grayish-blue);
+
+      &::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 12px solid $color-very-dark-grayish-blue;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
   }
 
@@ -208,6 +241,7 @@ body {
   }
 
   &__link {
+    width: 20px;
     margin-left: 8px;
     margin-right: 8px;
   }

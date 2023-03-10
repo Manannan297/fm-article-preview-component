@@ -48,7 +48,6 @@ body {
   max-width: 327px;
   background-color: white;
   border-radius: 12px;
-  overflow: hidden;
   line-height: 1.5;
 }
 @media (min-width: 768px) {
@@ -63,12 +62,14 @@ body {
 @media (max-width: 767px) {
   .card__image {
     height: 200px;
+    border-radius: 12px 12px 0 0;
   }
 }
 @media (min-width: 768px) {
   .card__image {
     flex: 0 0 auto;
     width: 39%;
+    border-radius: 12px 0 0 12px;
   }
 }
 .card__image .img-fluid {
@@ -102,6 +103,9 @@ body {
     line-height: 1.4;
   }
 }
+.card__text {
+  color: hsl(214, 17%, 51%);
+}
 .card__text p {
   margin-top: 0;
 }
@@ -124,43 +128,45 @@ body {
   overflow: hidden;
   margin-right: 16px;
 }
-.card__author-info strong {
-  display: block;
-}
-.card .share__btn {
-  margin-left: auto;
+.card__date {
+  color: hsl(212, 23%, 69%);
 }
 
+.share {
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .share {
+    position: relative;
+  }
+}
 .share__btn {
   width: 32px;
   height: 32px;
   padding: 0;
   border: none;
-  background: url("../images/icon-share.svg") center center no-repeat hsl(210, 46%, 95%);
+  background: hsl(210, 46%, 95%);
   border-radius: 50%;
   position: relative;
   z-index: 1;
   transition: all 0.3s;
+  cursor: pointer;
 }
 .share__btn path {
   transition: all 0.3s;
 }
-.share__btn.active {
+.share__btn:hover, .share__btn:focus, .share__btn.active {
+  outline: none;
   background-color: hsl(214, 17%, 51%);
 }
-.share__btn.active path {
+.share__btn:hover path, .share__btn:focus path, .share__btn.active path {
   fill: white;
 }
 .share__panel {
   position: absolute;
-  bottom: 0;
-  left: 0;
   display: flex;
   align-items: center;
   background-color: hsl(217, 19%, 35%);
-  width: 100%;
-  padding: 24px;
-  line-height: 32px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -168,6 +174,37 @@ body {
 .share__panel.active {
   opacity: 1;
   pointer-events: initial;
+}
+@media (max-width: 767px) {
+  .share__panel {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+    line-height: 32px;
+  }
+}
+@media (min-width: 768px) {
+  .share__panel {
+    padding: 18px 32px;
+    border-radius: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -85px;
+    filter: drop-shadow(0 2px 4px hsl(212, 23%, 69%));
+  }
+  .share__panel::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid hsl(217, 19%, 35%);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 .share__text {
   text-transform: uppercase;
@@ -180,6 +217,7 @@ body {
   align-items: center;
 }
 .share__link {
+  width: 20px;
   margin-left: 8px;
   margin-right: 8px;
 }/*# sourceMappingURL=styles.css.map */
