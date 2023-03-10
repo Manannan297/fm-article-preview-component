@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [frontendmentor]()
+- Solution URL: [frontendmentor](https://www.frontendmentor.io/solutions/article-preview-component-YoAVPnbeJB)
 - Live Site URL: [github](https://manannan297.github.io/fm-article-preview-component/)
 
 ## My process
